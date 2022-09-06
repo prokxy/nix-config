@@ -10,8 +10,8 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader. 
+  boot.loader.systemd-boot.enable = true; 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
@@ -87,6 +87,7 @@
     isNormalUser = true;
     description = "prokxy";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
     #  hnderbird
     ];
@@ -107,8 +108,12 @@
      brave
      bitwarden
      vlc
-     gnome.gnome-boxes
+     fish
      vscodium
+     # virtualization
+     virt-manager
+     qemu_kvm
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,4 +151,10 @@
   # Steam opengl support
   hardware.opengl.driSupport32Bit = true;
 
+  # virtualization
+  virtualisation.libvirtd.enable = true;
+
+  # flatpak
+  services.flatpak.enable = true;
 }
+
