@@ -154,7 +154,7 @@
   # virtualization
   virtualisation.libvirtd.enable = true;
 
-  # flatpak
+  # flatpak support
   services.flatpak.enable = true;
 }
 
